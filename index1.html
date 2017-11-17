@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>
+		test
+	</title>
+</head>
+<body>
+	<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  socket.emit('makegame', 'ngoc');
+  socket.on('ngoc', (data) => {
+  	console.log(data);	
+  	socket.emit('makemove', {name: data, move:{x: 50, y: 10}});
+  	socket.on('movengoc', (data) => {
+  		console.log(data);
+  	});
+  });
+  
+</script>
+</body>
+</html>
